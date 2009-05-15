@@ -45,29 +45,29 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // Construction & destruction
 
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X>::basic_ptree()
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X>::basic_ptree()
     {
         BOOST_PROPERTY_TREE_DEBUG_INCREMENT_INSTANCES_COUNT();
     }
 
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X>::basic_ptree(const data_type &rhs):
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X>::basic_ptree(const data_type &rhs):
         m_data(rhs)
     {
         BOOST_PROPERTY_TREE_DEBUG_INCREMENT_INSTANCES_COUNT();
     }
 
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X>::basic_ptree(const basic_ptree<C, K, P, D, X> &rhs)
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X>::basic_ptree(const basic_ptree<D, K, C, A, P, X> &rhs)
     {
         m_data = rhs.m_data;
         insert(end(), rhs.begin(), rhs.end());
         BOOST_PROPERTY_TREE_DEBUG_INCREMENT_INSTANCES_COUNT();
     }
 
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X>::~basic_ptree()
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X>::~basic_ptree()
     {
         BOOST_PROPERTY_TREE_DEBUG_DECREMENT_INSTANCES_COUNT();
     }
@@ -75,58 +75,58 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // Iterator access
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator 
-        basic_ptree<C, K, P, D, X>::begin()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+        basic_ptree<D, K, C, A, P, X>::begin()
     {
         return m_container.begin();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::const_iterator 
-        basic_ptree<C, K, P, D, X>::begin() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::const_iterator 
+        basic_ptree<D, K, C, A, P, X>::begin() const
     {
         return m_container.begin();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator 
-        basic_ptree<C, K, P, D, X>::end()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+        basic_ptree<D, K, C, A, P, X>::end()
     {
         return m_container.end();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::const_iterator 
-        basic_ptree<C, K, P, D, X>::end() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::const_iterator 
+        basic_ptree<D, K, C, A, P, X>::end() const
     {
         return m_container.end();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::reverse_iterator 
-        basic_ptree<C, K, P, D, X>::rbegin()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::reverse_iterator 
+        basic_ptree<D, K, C, A, P, X>::rbegin()
     {
         return m_container.rbegin();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::const_reverse_iterator 
-        basic_ptree<C, K, P, D, X>::rbegin() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::const_reverse_iterator 
+        basic_ptree<D, K, C, A, P, X>::rbegin() const
     {
         return m_container.rbegin();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::reverse_iterator 
-        basic_ptree<C, K, P, D, X>::rend()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::reverse_iterator 
+        basic_ptree<D, K, C, A, P, X>::rend()
     {
         return m_container.rend();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::const_reverse_iterator 
-        basic_ptree<C, K, P, D, X>::rend() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::const_reverse_iterator 
+        basic_ptree<D, K, C, A, P, X>::rend() const
     {
         return m_container.rend();
     }
@@ -134,64 +134,64 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // Data access
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::size() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::size() const
     {
         return m_container.size();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::max_size() const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::max_size() const
     {
         return m_container.max_size();
     }
 
-    template<class C, class K, class P, class D, class X>
-    bool basic_ptree<C, K, P, D, X>::empty() const
+    template<class D, class K, class C, class A, class P, class X>
+    bool basic_ptree<D, K, C, A, P, X>::empty() const
     {
         return m_container.empty();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::data_type &
-        basic_ptree<C, K, P, D, X>::data()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::data_type &
+        basic_ptree<D, K, C, A, P, X>::data()
     {
         return m_data;
     }
 
-    template<class C, class K, class P, class D, class X>
-    const typename basic_ptree<C, K, P, D, X>::data_type &
-        basic_ptree<C, K, P, D, X>::data() const
+    template<class D, class K, class C, class A, class P, class X>
+    const typename basic_ptree<D, K, C, A, P, X>::data_type &
+        basic_ptree<D, K, C, A, P, X>::data() const
     {
         return m_data;
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::value_type &
-        basic_ptree<C, K, P, D, X>::front()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::value_type &
+        basic_ptree<D, K, C, A, P, X>::front()
     {
         return m_container.front();
     }
     
-    template<class C, class K, class P, class D, class X>
-    const typename basic_ptree<C, K, P, D, X>::value_type &
-        basic_ptree<C, K, P, D, X>::front() const
+    template<class D, class K, class C, class A, class P, class X>
+    const typename basic_ptree<D, K, C, A, P, X>::value_type &
+        basic_ptree<D, K, C, A, P, X>::front() const
     {
         return m_container.front();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::value_type &
-        basic_ptree<C, K, P, D, X>::back()
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::value_type &
+        basic_ptree<D, K, C, A, P, X>::back()
     {
         return m_container.back();
     }
 
-    template<class C, class K, class P, class D, class X>
-    const typename basic_ptree<C, K, P, D, X>::value_type &
-        basic_ptree<C, K, P, D, X>::back() const
+    template<class D, class K, class C, class A, class P, class X>
+    const typename basic_ptree<D, K, C, A, P, X>::value_type &
+        basic_ptree<D, K, C, A, P, X>::back() const
     {
         return m_container.back();
     }
@@ -199,9 +199,9 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // Operators
 
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::operator =(const basic_ptree<C, K, P, D, X> &rhs)
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::operator =(const basic_ptree<D, K, C, A, P, X> &rhs)
     {
         if (&rhs != this)
         {
@@ -212,8 +212,8 @@ namespace boost { namespace property_tree
         return *this;
     }
 
-    template<class C, class K, class P, class D, class X>
-    bool basic_ptree<C, K, P, D, X>::operator ==(const basic_ptree<C, K, P, D, X> &rhs) const
+    template<class D, class K, class C, class A, class P, class X>
+    bool basic_ptree<D, K, C, A, P, X>::operator ==(const basic_ptree<D, K, C, A, P, X> &rhs) const
     {
         
         // Data and sizes must be equal
@@ -238,8 +238,8 @@ namespace boost { namespace property_tree
 
     }
 
-    template<class C, class K, class P, class D, class X>
-    bool basic_ptree<C, K, P, D, X>::operator !=(const basic_ptree<C, K, P, D, X> &rhs) const
+    template<class D, class K, class C, class A, class P, class X>
+    bool basic_ptree<D, K, C, A, P, X>::operator !=(const basic_ptree<D, K, C, A, P, X> &rhs) const
     {
         return !operator ==(rhs);
     }
@@ -247,9 +247,9 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // Container operations
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator 
-        basic_ptree<C, K, P, D, X>::find(const key_type &key)
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+        basic_ptree<D, K, C, A, P, X>::find(const key_type &key)
     {
         C comp;
         for (iterator it = begin(); it != end(); ++it)
@@ -258,9 +258,9 @@ namespace boost { namespace property_tree
         return end();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::const_iterator 
-        basic_ptree<C, K, P, D, X>::find(const key_type &key) const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::const_iterator 
+        basic_ptree<D, K, C, A, P, X>::find(const key_type &key) const
     {
         C comp;
         for (const_iterator it = begin(); it != end(); ++it)
@@ -269,9 +269,9 @@ namespace boost { namespace property_tree
         return end();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::count(const key_type &key) const
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::count(const key_type &key) const
     {
         C comp;
         size_type count = 0;
@@ -281,39 +281,39 @@ namespace boost { namespace property_tree
         return count;
     }
 
-    template<class C, class K, class P, class D, class X>
-    void basic_ptree<C, K, P, D, X>::clear()
+    template<class D, class K, class C, class A, class P, class X>
+    void basic_ptree<D, K, C, A, P, X>::clear()
     {
         m_data = data_type();
         m_container.clear();
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator 
-    basic_ptree<C, K, P, D, X>::insert(iterator where, 
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+    basic_ptree<D, K, C, A, P, X>::insert(iterator where, 
                                        const value_type &value)
     {
         return m_container.insert(where, value);
     }
 
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class It>
-    void basic_ptree<C, K, P, D, X>::insert(iterator where, It first, It last)
+    void basic_ptree<D, K, C, A, P, X>::insert(iterator where, It first, It last)
     {
         for (; first != last; ++first, ++where)
             where = insert(where, value_type(first->first, first->second));
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator 
-        basic_ptree<C, K, P, D, X>::erase(iterator where)
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+        basic_ptree<D, K, C, A, P, X>::erase(iterator where)
     {
         return m_container.erase(where);
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::erase(const key_type &key)
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::erase(const key_type &key)
     {
         C comp;
         size_type count = 0;
@@ -331,60 +331,60 @@ namespace boost { namespace property_tree
         return count;
     }
 
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class It> 
-    typename basic_ptree<C, K, P, D, X>::iterator 
-        basic_ptree<C, K, P, D, X>::erase(It first, It last)
+    typename basic_ptree<D, K, C, A, P, X>::iterator 
+        basic_ptree<D, K, C, A, P, X>::erase(It first, It last)
     {
         while (first != last)
             first = erase(first);
         return first;
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator
-        basic_ptree<C, K, P, D, X>::push_front(const value_type &value)
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator
+        basic_ptree<D, K, C, A, P, X>::push_front(const value_type &value)
     {
         return insert(begin(), value);
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::iterator
-        basic_ptree<C, K, P, D, X>::push_back(const value_type &value)
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::iterator
+        basic_ptree<D, K, C, A, P, X>::push_back(const value_type &value)
     {
         return insert(end(), value);
     }
 
-    template<class C, class K, class P, class D, class X>
-    void basic_ptree<C, K, P, D, X>::pop_front()
+    template<class D, class K, class C, class A, class P, class X>
+    void basic_ptree<D, K, C, A, P, X>::pop_front()
     {
         erase(begin());
     }
 
-    template<class C, class K, class P, class D, class X>
-    void basic_ptree<C, K, P, D, X>::pop_back()
+    template<class D, class K, class C, class A, class P, class X>
+    void basic_ptree<D, K, C, A, P, X>::pop_back()
     {
         iterator last = end();
         --last;
         erase(last);
     }
-        
-    template<class C, class K, class P, class D, class X>
-    void basic_ptree<C, K, P, D, X>::swap(basic_ptree<C, K, P, D, X> &rhs)
+
+    template<class D, class K, class C, class A, class P, class X>
+    void basic_ptree<D, K, C, A, P, X>::swap(basic_ptree<D, K, C, A, P, X> &rhs)
     {
         m_data.swap(rhs.m_data);
         m_container.swap(rhs.m_container);
     }
 
-    template<class C, class K, class P, class D, class X>
-    void basic_ptree<C, K, P, D, X>::reverse()
+    template<class D, class K, class C, class A, class P, class X>
+    void basic_ptree<D, K, C, A, P, X>::reverse()
     {
         m_container.reverse();
     }
     
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class SortTr> 
-    void basic_ptree<C, K, P, D, X>::sort(SortTr tr)
+    void basic_ptree<D, K, C, A, P, X>::sort(SortTr tr)
     {
         m_container.sort(tr);
     }
@@ -393,9 +393,9 @@ namespace boost { namespace property_tree
     // ptree operations
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::get_child(const path_type &path)
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::get_child(const path_type &path)
     {
         self_type *child = path.get_child(*this);
         if (child)
@@ -405,19 +405,19 @@ namespace boost { namespace property_tree
     }
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    const basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::get_child(const path_type &path) const
+    template<class D, class K, class C, class A, class P, class X>
+    const basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::get_child(const path_type &path) const
     {
         self_type *nc_this = const_cast<self_type *>(this);
         return nc_this->get_child(path);
     }
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::get_child(const path_type &path, 
-                                              basic_ptree<C, K, P, D, X> &default_value)
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::get_child(const path_type &path, 
+                                              basic_ptree<D, K, C, A, P, X> &default_value)
     {
         self_type *child = path.get_child(*this);
         if (child)
@@ -427,10 +427,10 @@ namespace boost { namespace property_tree
     }
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    const basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::get_child(const path_type &path, 
-                                              const basic_ptree<C, K, P, D, X> &default_value) const
+    template<class D, class K, class C, class A, class P, class X>
+    const basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::get_child(const path_type &path, 
+                                              const basic_ptree<D, K, C, A, P, X> &default_value) const
     {
         self_type *nc_this = const_cast<self_type *>(this);
         self_type &nc_default_value = const_cast<self_type &>(default_value);
@@ -439,9 +439,9 @@ namespace boost { namespace property_tree
 
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    optional<basic_ptree<C, K, P, D, X> &> 
-        basic_ptree<C, K, P, D, X>::get_child_optional(const path_type &path)
+    template<class D, class K, class C, class A, class P, class X>
+    optional<basic_ptree<D, K, C, A, P, X> &> 
+        basic_ptree<D, K, C, A, P, X>::get_child_optional(const path_type &path)
     {
         self_type *child = path.get_child(*this);
         if (child)
@@ -451,9 +451,9 @@ namespace boost { namespace property_tree
     }
 
     // Get child ptree
-    template<class C, class K, class P, class D, class X>
-    optional<const basic_ptree<C, K, P, D, X> &> 
-        basic_ptree<C, K, P, D, X>::get_child_optional(const path_type &path) const
+    template<class D, class K, class C, class A, class P, class X>
+    optional<const basic_ptree<D, K, C, A, P, X> &> 
+        basic_ptree<D, K, C, A, P, X>::get_child_optional(const path_type &path) const
     {
         self_type *nc_this = const_cast<self_type *>(this);
         optional<self_type &> tmp = nc_this->get_child_optional(path);
@@ -464,10 +464,10 @@ namespace boost { namespace property_tree
     }
 
     // Put child ptree
-    template<class C, class K, class P, class D, class X>
-    basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::put_child(const path_type &path, 
-                                              const basic_ptree<C, K, P, D, X> &value,
+    template<class D, class K, class C, class A, class P, class X>
+    basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::put_child(const path_type &path, 
+                                              const basic_ptree<D, K, C, A, P, X> &value,
                                               bool do_not_replace)
     {
         self_type *child = path.put_child(*this, value, do_not_replace);
@@ -478,9 +478,9 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
-    Type basic_ptree<C, K, P, D, X>::get_value(const translator_type &x) const
+    Type basic_ptree<D, K, C, A, P, X>::get_value(const translator_type &x) const
     {
         BOOST_STATIC_ASSERT(boost::is_pointer<Type>::value == false);   // Disallow pointer types, they are unsafe
         Type value;
@@ -492,9 +492,9 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
-    Type basic_ptree<C, K, P, D, X>::get_value(const Type &default_value, 
+    Type basic_ptree<D, K, C, A, P, X>::get_value(const Type &default_value, 
                                                const translator_type &x) const
     {
         BOOST_STATIC_ASSERT(boost::is_pointer<Type>::value == false);   // Disallow pointer types, they are unsafe
@@ -506,20 +506,20 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class CharType>
     std::basic_string<CharType> 
-        basic_ptree<C, K, P, D, X>::get_value(const CharType *default_value, 
+        basic_ptree<D, K, C, A, P, X>::get_value(const CharType *default_value, 
                                               const translator_type &x) const
     {
         return get_value(std::basic_string<CharType>(default_value), x);
     }
 
     // Get value from data of ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
     optional<Type> 
-        basic_ptree<C, K, P, D, X>::get_value_optional(const translator_type &x) const
+        basic_ptree<D, K, C, A, P, X>::get_value_optional(const translator_type &x) const
     {
         BOOST_STATIC_ASSERT(boost::is_pointer<Type>::value == false);   // Disallow pointer types, they are unsafe
         Type value;
@@ -530,18 +530,18 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of child ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
-    Type basic_ptree<C, K, P, D, X>::get(const path_type &path,
+    Type basic_ptree<D, K, C, A, P, X>::get(const path_type &path,
                                          const translator_type &x) const
     {
         return get_child(path).get_value<Type>(x);
     }
 
     // Get value from data of child ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
-    Type basic_ptree<C, K, P, D, X>::get(const path_type &path, 
+    Type basic_ptree<D, K, C, A, P, X>::get(const path_type &path, 
                                          const Type &default_value, 
                                          const translator_type &x) const
     {
@@ -552,10 +552,10 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of child ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class CharType>
     std::basic_string<CharType> 
-        basic_ptree<C, K, P, D, X>::get(const path_type &path, 
+        basic_ptree<D, K, C, A, P, X>::get(const path_type &path, 
                                         const CharType *default_value,
                                         const translator_type &x) const
     {
@@ -563,22 +563,22 @@ namespace boost { namespace property_tree
     }
 
     // Get value from data of child ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type>
     optional<Type> 
-        basic_ptree<C, K, P, D, X>::get_optional(const path_type &path, 
+        basic_ptree<D, K, C, A, P, X>::get_optional(const path_type &path, 
                                                  const translator_type &x) const
     {
-        if (optional<const basic_ptree<C, K, P, D, X> &> child = get_child_optional(path))
+        if (optional<const basic_ptree<D, K, C, A, P, X> &> child = get_child_optional(path))
             return child.get().get_value_optional<Type>(x);
         else
             return optional<Type>();
     }
 
     // Put value in data of ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type> 
-    void basic_ptree<C, K, P, D, X>::put_value(const Type &value, const translator_type &x)
+    void basic_ptree<D, K, C, A, P, X>::put_value(const Type &value, const translator_type &x)
     {
         if (!x.put_value(*this, value))
             BOOST_PROPERTY_TREE_THROW(ptree_bad_data(std::string("conversion of type \"") + typeid(Type).name() + 
@@ -586,10 +586,10 @@ namespace boost { namespace property_tree
     }
 
     // Put value in data of child ptree
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     template<class Type> 
-    basic_ptree<C, K, P, D, X> &
-        basic_ptree<C, K, P, D, X>::put(const path_type &path, 
+    basic_ptree<D, K, C, A, P, X> &
+        basic_ptree<D, K, C, A, P, X>::put(const path_type &path, 
                                         const Type &value,
                                         bool do_not_replace,
                                         const translator_type &x)
@@ -613,21 +613,21 @@ namespace boost { namespace property_tree
 
 #ifdef BOOST_PROPERTY_TREE_DEBUG
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::debug_get_instances_count() 
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::debug_get_instances_count() 
     { 
-        empty_ptree<basic_ptree<C, K, P, D, X> >();    // Make sure empty ptree exists
+        empty_ptree<basic_ptree<D, K, C, A, P, X> >();    // Make sure empty ptree exists
         return debug_instances_count - 1;              // Do not count empty ptree
     }
 
-    template<class C, class K, class P, class D, class X>
-    typename basic_ptree<C, K, P, D, X>::size_type 
-        basic_ptree<C, K, P, D, X>::debug_instances_count;
+    template<class D, class K, class C, class A, class P, class X>
+    typename basic_ptree<D, K, C, A, P, X>::size_type 
+        basic_ptree<D, K, C, A, P, X>::debug_instances_count;
 
-    template<class C, class K, class P, class D, class X>
+    template<class D, class K, class C, class A, class P, class X>
     boost::detail::lightweight_mutex 
-        basic_ptree<C, K, P, D, X>::debug_mutex;
+        basic_ptree<D, K, C, A, P, X>::debug_mutex;
 
 #endif
 
@@ -641,8 +641,8 @@ namespace boost { namespace property_tree
         return pt;
     }
 
-    template<class C, class K, class P, class D, class X>
-    inline void swap(basic_ptree<C, K, P, D, X> &pt1, basic_ptree<C, K, P, D, X> &pt2)
+    template<class D, class K, class C, class A, class P, class X>
+    inline void swap(basic_ptree<D, K, C, A, P, X> &pt1, basic_ptree<D, K, C, A, P, X> &pt2)
     {
         pt1.swap(pt2);
     }

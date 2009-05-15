@@ -25,13 +25,16 @@ namespace boost { namespace property_tree
 
         // Helper for preparing what string in ptree_bad_path exception
         template<class P> 
-        std::string prepare_bad_path_what(const std::string &what, const P &path)
+        std::string prepare_bad_path_what(const std::string &what,
+                                          const P &path)
         {
-            using namespace detail;     // To allow correct resolution of path_to_string()
+            // To allow correct resolution of path_to_string()
+            using namespace detail;
             return what + " (" + path_to_string(path) + ")";
         }
 
-        // Default data-to-string converter; this is overridden for default data (string)
+        // Default data-to-string converter; this is overridden for default
+        // data (string)
         template<class D>
         std::string data_to_string(const D &data)
         {
@@ -39,10 +42,12 @@ namespace boost { namespace property_tree
         }
 
         // Helper for preparing what string in ptree_bad_data exception
-        template<class D> 
-        std::string prepare_bad_data_what(const std::string &what, const D &data)
+        template<class D>
+        std::string prepare_bad_data_what(const std::string &what,
+                                          const D &data)
         {
-            using namespace detail;     // To allow correct resolution of data_to_string()
+            // To allow correct resolution of data_to_string()
+            using namespace detail;
             return what + " (" + data_to_string(data) + ")";
         }
 
@@ -53,19 +58,19 @@ namespace boost { namespace property_tree
 
     inline ptree_error::ptree_error(const std::string &what): 
         std::runtime_error(what) 
-    { 
+    {
     }
-    
+
     inline ptree_error::~ptree_error() throw()
-    { 
+    {
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // ptree_bad_data
 
-    template<class D> 
+    template<class D>
     ptree_bad_data::ptree_bad_data(const std::string &what, const D &data):
-        ptree_error(detail::prepare_bad_data_what(what, data)), 
+        ptree_error(detail::prepare_bad_data_what(what, data)),
         m_data(data)
     {
     }
@@ -74,7 +79,7 @@ namespace boost { namespace property_tree
     {
     }
 
-    template<class D> 
+    template<class D>
     D ptree_bad_data::data()
     {
         return boost::any_cast<D>(m_data);
@@ -83,9 +88,9 @@ namespace boost { namespace property_tree
     ///////////////////////////////////////////////////////////////////////////
     // ptree_bad_path
 
-    template<class P> 
+    template<class P>
     ptree_bad_path::ptree_bad_path(const std::string &what, const P &path):
-        ptree_error(detail::prepare_bad_path_what(what, path)), 
+        ptree_error(detail::prepare_bad_path_what(what, path)),
         m_path(path)
     {
 
@@ -95,7 +100,7 @@ namespace boost { namespace property_tree
     {
     }
 
-    template<class P> 
+    template<class P>
     P ptree_bad_path::path()
     {
         return boost::any_cast<P>(m_path);
