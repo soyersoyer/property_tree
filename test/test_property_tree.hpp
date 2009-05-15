@@ -1054,7 +1054,9 @@ void test_custom_data_type(PTREE *)
     typedef PTREE::path_type Path;
 
     // Property_tree with boost::any as data type
-    typedef boost::property_tree::basic_ptree<Comp, Str, Path, boost::any, MyTranslator> my_ptree;
+    typedef boost::property_tree::basic_ptree<
+        Str, boost::any, Comp, std::allocator<boost::any>, Path, MyTranslator>
+        my_ptree;
     my_ptree pt;
 
     // Put/get int value
