@@ -35,7 +35,7 @@ const char *ok_data_3 =
     "\n"
     "<!-- Last edited: 27 May 1999 by bent -->\n"
     "<header><?Pub Dtl?>\n"
-    "	<title>XML Linking Language (XLink)</title>\n"
+    "	<title><![CDATA[XML Linking Language (XLink)]]></title>\n"
     "	<version>Version 1.0</version>\n"
     "	<w3c-designation>WD-xlink-19990527</w3c-designation>\n"
     "	<w3c-doctype>World Wide Web Consortium Working Draft</w3c-doctype>\n"
