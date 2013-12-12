@@ -15,12 +15,14 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/detail/ptree_utils.hpp>
 #include <boost/property_tree/detail/json_parser_error.hpp>
+#include <boost/type_traits/make_unsigned.hpp>
 #include <boost/spirit/include/classic.hpp>
 #include <boost/limits.hpp>
 #include <string>
 #include <locale>
 #include <istream>
 #include <vector>
+#include <codecvt>
 #include <algorithm>
 
 namespace boost { namespace property_tree { namespace json_parser
@@ -41,7 +43,10 @@ namespace boost { namespace property_tree { namespace json_parser
         Str name;
         Ptree root;
         std::vector<Ptree *> stack;
-
+        unsigned long u_surrogate;
+        
+        context() : u_surrogate(0) {}
+        
         struct a_object_s
         {
             context &c;
@@ -146,8 +151,53 @@ namespace boost { namespace property_tree { namespace json_parser
             a_unicode(context &c): c(c) { }
             void operator()(unsigned long u) const
             {
-                u = (std::min)(u, static_cast<unsigned long>((std::numeric_limits<Ch>::max)()));
-                c.string += Ch(u);
+                typedef typename make_unsigned<Ch>::type UCh;
+                if (long(std::numeric_limits<UCh>::max()) >= 0xFFFF)
+                {
+                    if ((c.u_surrogate == 0) && (0xD7FF < u && u < 0xE000))
+                    {
+                        c.u_surrogate = u;
+                    }
+                    else if (c.u_surrogate)
+                    {
+                        c.string += Ch((std::min)(c.u_surrogate, static_cast<unsigned long>((std::numeric_limits<Ch>::max)())));
+                        c.u_surrogate = 0;
+                    }
+                    
+                    u = (std::min)(u, static_cast<unsigned long>((std::numeric_limits<Ch>::max)()));
+                    c.string += Ch(u);
+                }
+                else // Ch is one byte - encode the given Unicode code point as UTF-8
+                {
+                    if ((c.u_surrogate == 0) && (0xD7FF < u && u < 0xE000))
+                    {
+                        c.u_surrogate = u;
+                    }
+                    else
+                    {
+                        wchar_t utf16str[3] = { wchar_t(0), wchar_t(0), wchar_t(0) };
+                        wchar_t const *from_next = utf16str;
+                        
+                        Ch utf8str[5] = { Ch(0), Ch(0), Ch(0), Ch(0), Ch(0) };
+                        Ch * to_next = utf8str;
+                        
+                        std::size_t size = 0;
+                        if (c.u_surrogate)
+                        {
+                            utf16str[size++] = wchar_t(c.u_surrogate);
+                            c.u_surrogate = 0;
+                        }
+                        utf16str[size++] = wchar_t(u);
+                        
+                        std::mbstate_t state = std::mbstate_t();
+                        std::codecvt_utf8_utf16<wchar_t> utf16_utf8;
+                        
+                        if (utf16_utf8.out(state, &utf16str[0], &utf16str[0] + size, from_next, &utf8str[0], &utf8str[4], to_next) != 0)
+                            BOOST_PROPERTY_TREE_THROW(json_parser_error("write error", "", 0));
+                        
+                        c.string += utf8str;
+                    }
+                }
             }
         };
 
